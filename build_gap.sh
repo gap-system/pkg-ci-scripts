@@ -12,12 +12,8 @@ set -ex
 git clone --depth=2 -b ${GAPBRANCH:-master} https://github.com/gap-system/gap.git $GAPROOT
 cd $GAPROOT
 
-# for HPC-GAP, install ward, add suitable flags
+# for HPC-GAP, add suitable flags
 if [[ $HPCGAP = yes ]]; then
-  git clone https://github.com/gap-system/ward
-  cd ward
-  CFLAGS= LDFLAGS= ./build.sh
-  cd ..
   GAP_CONFIGFLAGS="$GAP_CONFIGFLAGS --enable-hpcgap"
 fi
 
