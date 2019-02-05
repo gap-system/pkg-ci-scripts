@@ -44,6 +44,23 @@ Then this will compile all packages whose package directory name starts with
 packages where the directory name contains the version.
 
 
+### Q: How can I install a development version of another package needed for the CI tests?
+
+A: If you need the latest development version of another package in
+order for your CI tests to run successfully, this can be achieved by
+setting the `GAP_PKGS_TO_CLONE` environment variable to a list of package
+names or URLs, separated by spaces. For example, if you set
+
+    GAP_PKGS_TO_CLONE="mypkg1 myuser/mypkg2 https://gitlab.com/myuser/mypkg3"
+
+This will clone packages from the following three URLs:
+  - https://github.com/gap-packages/mypkg1
+  - https://github.com/myuser/mypkg2
+  - https://gitlab.com/myuser/mypkg3
+
+Don't forget to also add any package that needs to be compiled to `GAP_PKGS_TO_BUILD`.
+
+
 ### Q: How can I enable (or disable) code coverage reporting?
 
 TODO: mention `.codecov.yml` (perhaps also Coveralls); also `NO_COVERAGE`
