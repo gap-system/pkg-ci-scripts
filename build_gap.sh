@@ -31,7 +31,9 @@ cd pkg
 # optionally: clone specific package versions, in case we need to test
 # with development versions
 for pkg in ${GAP_PKGS_TO_CLONE}; do
-    rm -rf "$pkg"
+    # delete any existing variants of the package to multiple version
+    # from being compiled later on
+    rm -rf "$pkg"*
     if [[ "$pkg" =~ ^http ]] ; then
         # looks like a full URL
         git clone "$pkg"
