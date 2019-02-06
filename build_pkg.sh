@@ -9,8 +9,8 @@
 set -ex
 
 # ensure coverage is turned on
-export CFLAGS="$CFLAGS -fprofile-arcs -ftest-coverage"
-export LDFLAGS="$LDFLAGS -fprofile-arcs"
+export CFLAGS="$CFLAGS --coverage"
+export LDFLAGS="$LDFLAGS --coverage"
 
 # adjust build flags for 32bit builds
 if [[ $ABI = 32 ]]; then
