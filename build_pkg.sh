@@ -10,11 +10,13 @@ set -ex
 
 # ensure coverage is turned on
 export CFLAGS="$CFLAGS --coverage"
+export CXXFLAGS="$CXXFLAGS --coverage"
 export LDFLAGS="$LDFLAGS --coverage"
 
 # adjust build flags for 32bit builds
 if [[ $ABI = 32 ]]; then
     export CFLAGS="$CFLAGS -m32"
+    export CXXFLAGS="$CXXFLAGS -m32"
     export LDFLAGS="$LDFLAGS -m32"
 fi
 
