@@ -21,4 +21,6 @@ if [[ -z $NO_COVERAGE ]]; then
     GAP="$GAP --cover $COVDIR/test.coverage"
 fi
 
-$GAP tst/testall.g
+# TODO: honor TestFile from PackageInfo record, but make sure that it
+# is for the package in the current directory
+$GAP ${GAP_TESTFILE:-tst/testall.g}
