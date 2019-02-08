@@ -24,6 +24,45 @@ TODO: decide how to do this: use subtree merges? Or perhaps we should remove tho
     git clone https://github.com/gap-system/pkg-ci-scripts.git scripts
 
 
+## Example Travis CI integration
+
+Example content for `.travis.yml`
+```
+language: c
+env:
+  global:
+    - GAPROOT=gaproot
+    - COVDIR=coverage
+    - GAP_PKGS_TO_CLONE="rcwa"
+    - GAP_PKGS_TO_BUILD="io profiling"  # optional
+
+addons:
+  apt_packages:
+    - libgmp-dev
+    - libreadline-dev
+
+matrix:
+  include:
+    - env: GAPBRANCH="master"
+    - env: GAPBRANCH="stable-4.9"
+    - env: GAPBRANCH="stable-4.10"
+
+branches:
+  only:
+    - master
+
+before_script:
+  - export GAPROOT="$HOME/gap"
+  - git clone https://github.com/gap-system/pkg-ci-scripts.git scripts
+  - scripts/build_gap.sh
+script:
+  - scripts/build_pkg.sh && scripts/run_tests.sh
+after_script:
+  - bash scripts/gather-coverage.sh
+  - bash <(curl -s https://codecov.io/bash)
+```
+
+
 ## FAQ
 
 ### Q: How can I ensure other required GAP packages get compiled?
