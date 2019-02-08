@@ -27,7 +27,7 @@ if [[ -x autogen.sh ]]; then
     make -j4 V=1
 elif [[ -x configure ]]; then
     ./configure $GAPROOT
-    make -j4
+    make -j4 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
 fi
 
 # set up a custom GAP root containing only this package, so that
