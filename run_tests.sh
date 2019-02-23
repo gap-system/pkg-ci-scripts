@@ -22,7 +22,7 @@ GAP="$GAPROOT/bin/gap.sh -l $PWD/gaproot; --quitonbreak"
 # Unless explicitly turned off by setting the NO_COVERAGE environment variable,
 # we collect coverage data
 if [[ -z $NO_COVERAGE ]]; then
-    mkdir $COVDIR
+    mkdir -p $COVDIR
     GAP="$GAP --cover $COVDIR/$(mktemp XXXXXX).coverage"
 fi
 
