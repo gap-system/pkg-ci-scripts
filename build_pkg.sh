@@ -33,4 +33,4 @@ fi
 # set up a custom GAP root containing only this package, so that
 # we can force GAP to load the correct version of this package
 mkdir -p gaproot/pkg/
-ln -s $PWD gaproot/pkg/
+ln -f -s $PWD gaproot/pkg/
