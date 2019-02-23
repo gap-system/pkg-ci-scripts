@@ -11,6 +11,11 @@
 #
 set -ex
 
+# set up a custom GAP root containing only this package, so that
+# we can force GAP to load the correct version of this package
+mkdir -p gaproot/pkg/
+ln -f -s $PWD gaproot/pkg/
+
 # start GAP with custom GAP root, to ensure correct package version is loaded
 GAP="$GAPROOT/bin/gap.sh -l $PWD/gaproot; --quitonbreak"
 
