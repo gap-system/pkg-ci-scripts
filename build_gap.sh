@@ -24,7 +24,7 @@ make -j4 V=1
 
 # download packages; instruct wget to retry several times if the
 # connection is refused, to work around intermittent failures
-make bootstrap-pkg-full WGET="wget -N --no-check-certificate --tries=5 --waitretry=5 --retry-connrefused"
+make bootstrap-pkg-${GAP_BOOTSTRAP-full} WGET="wget -N --no-check-certificate --tries=5 --waitretry=5 --retry-connrefused"
 
 cd pkg
 
