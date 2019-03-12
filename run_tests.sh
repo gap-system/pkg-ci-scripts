@@ -12,6 +12,8 @@
 #
 set -ex
 
+GAPROOT=${GAPROOT-$HOME/gap}
+
 # set up a custom GAP root containing only this package, so that
 # we can force GAP to load the correct version of this package
 mkdir -p gaproot/pkg/

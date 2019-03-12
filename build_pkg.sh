@@ -12,6 +12,8 @@
 #
 set -ex
 
+GAPROOT=${GAPROOT-$HOME/gap}
+
 # ensure coverage is turned on
 export CFLAGS="$CFLAGS --coverage"
 export CXXFLAGS="$CXXFLAGS --coverage"

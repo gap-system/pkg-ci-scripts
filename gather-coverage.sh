@@ -17,6 +17,8 @@ if [[ -n $NO_COVERAGE ]]; then
     exit 0
 fi
 
+GAPROOT=${GAPROOT-$HOME/gap}
+
 # start GAP with custom GAP root, to ensure correct package version is loaded
 GAP="$GAPROOT/bin/gap.sh -l $PWD/gaproot; --quitonbreak -q"
 

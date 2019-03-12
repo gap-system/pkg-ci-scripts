@@ -31,7 +31,6 @@ Example content for `.travis.yml`
 language: c
 env:
   global:
-    - GAPROOT=$HOME/gap
     - GAP_PKGS_TO_CLONE="rcwa"
     - GAP_PKGS_TO_BUILD="io profiling"  # optional
 
@@ -111,7 +110,7 @@ TODO: mention `.codecov.yml` (perhaps also Coveralls); also `NO_COVERAGE`
 - `GAP_PKGS_TO_BUILD` -- see above for an explanation
 - `GAP_PKGS_TO_CLONE` -- see above for an explanation
 - `GAPBRANCH` -- the GAP branch to use (default: `master`)
-- `GAPROOT` -- the the location GAP is (to be) installed at
+- `GAPROOT` -- the the location GAP is (to be) installed at (default: `$HOME/gap`)
 - `HPCGAP` -- set to `yes` to run test with HPC-GAP
 - `NO_COVERAGE` -- set to any value to disable coverage generation and uploading
 
