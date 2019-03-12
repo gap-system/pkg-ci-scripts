@@ -32,7 +32,6 @@ language: c
 env:
   global:
     - GAPROOT=$HOME/gap
-    - COVDIR=coverage
     - GAP_PKGS_TO_CLONE="rcwa"
     - GAP_PKGS_TO_BUILD="io profiling"  # optional
 

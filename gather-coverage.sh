@@ -25,7 +25,7 @@ if LoadPackage("profiling") <> true then
     Print("ERROR: could not load profiling package");
     FORCE_QUIT_GAP(1);
 fi;
-d := Directory("$COVDIR");;
+d := Directory("${COVDIR-coverage}");;
 covs := [];;
 for f in DirectoryContents(d) do
     if f in [".", ".."] then continue; fi;

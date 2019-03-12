@@ -22,8 +22,8 @@ GAP="$GAPROOT/bin/gap.sh -l $PWD/gaproot; --quitonbreak"
 # Unless explicitly turned off by setting the NO_COVERAGE environment variable,
 # we collect coverage data
 if [[ -z $NO_COVERAGE ]]; then
-    mkdir -p $COVDIR
-    GAP="$GAP --cover $COVDIR/$(mktemp XXXXXX).coverage"
+    mkdir -p ${COVDIR-coverage}
+    GAP="$GAP --cover ${COVDIR-coverage}/$(mktemp XXXXXX).coverage"
 fi
 
 # TODO: honor TestFile from PackageInfo record, but make sure that it
