@@ -31,7 +31,7 @@ Example content for `.travis.yml`
 language: c
 env:
   global:
-    - GAPROOT=gaproot
+    - GAPROOT=$HOME/gap
     - COVDIR=coverage
     - GAP_PKGS_TO_CLONE="rcwa"
     - GAP_PKGS_TO_BUILD="io profiling"  # optional
@@ -43,16 +43,15 @@ addons:
 
 matrix:
   include:
-    - env: GAPBRANCH="master"
-    - env: GAPBRANCH="stable-4.9"
-    - env: GAPBRANCH="stable-4.10"
+    - env: GAPBRANCH=master
+    - env: GAPBRANCH=stable-4.9
+    - env: GAPBRANCH=stable-4.10
 
 branches:
   only:
     - master
 
 before_script:
-  - export GAPROOT="$HOME/gap"
   - git clone https://github.com/gap-system/pkg-ci-scripts.git scripts
   - scripts/build_gap.sh
 script:
@@ -103,6 +102,19 @@ Don't forget to also add any package that needs to be compiled to `GAP_PKGS_TO_B
 ### Q: How can I enable (or disable) code coverage reporting?
 
 TODO: mention `.codecov.yml` (perhaps also Coveralls); also `NO_COVERAGE`
+
+
+### Q: What are all special environment variables that affect these scripts?
+
+- `COVDIR` -- set to the directory into which coverage results shall be stored
+- `GAP_BOOTSTRAP` -- set to `minimal` or `full` to install the respective set of GAP packages (default: `full`)
+- `GAP_CONFIGFLAGS` -- optional configure flags to pass to GAP's configure script
+- `GAP_PKGS_TO_BUILD` -- see above for an explanation
+- `GAP_PKGS_TO_CLONE` -- see above for an explanation
+- `GAPBRANCH` -- the GAP branch to use (default: `master`)
+- `GAPROOT` -- the the location GAP is (to be) installed at
+- `HPCGAP` -- set to `yes` to run test with HPC-GAP
+- `NO_COVERAGE` -- set to any value to disable coverage generation and uploading
 
 
 ## Contact
