@@ -38,16 +38,13 @@ addons:
   apt_packages:
     - libgmp-dev
     - libreadline-dev
+    - zlib1g-dev
 
 matrix:
   include:
     - env: GAPBRANCH=master
     - env: GAPBRANCH=stable-4.9
     - env: GAPBRANCH=stable-4.10
-
-branches:
-  only:
-    - master
 
 before_script:
   - git clone https://github.com/gap-system/pkg-ci-scripts.git scripts
