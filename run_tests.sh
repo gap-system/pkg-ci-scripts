@@ -16,6 +16,10 @@ GAPROOT=${GAPROOT-$HOME/gap}
 
 # set up a custom GAP root containing only this package, so that
 # we can force GAP to load the correct version of this package
+# (we already did that in build_pkg.sh, but we do it again here,
+# to allow the occasional instance where a package wants to also
+# run the tests of others packages, by invoking this script multiple
+# times in different directories)
 mkdir -p gaproot/pkg/
 ln -f -s $PWD gaproot/pkg/
 
