@@ -36,6 +36,8 @@ for f in DirectoryContents(d) do
 od;
 Print("Merging coverage results from ", covs, "\n");
 r := MergeLineByLineProfiles(covs);;
+# filtered out unwanted other packages to avoid bad coverage interaction
+r.line_info := Filtered(r.line_info, x -> not StartsWith( x[1], "$HOME/gap/" ) );;
 Print("Outputting JSON\n");
 OutputJsonCoverage(r, "gap-coverage.json");;
 QUIT_GAP(0);
