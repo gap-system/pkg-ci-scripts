@@ -24,9 +24,18 @@ if [[ $HPCGAP = yes ]]; then
 fi
 
 # build GAP in a subdirectory
-./autogen.sh
-./configure $GAP_CONFIGFLAGS
-make -j4 V=1
+if test -x ./autogen.sh ; then
+  BuildPackagesOptions="--strict"
+  ./autogen.sh
+  ./configure $GAP_CONFIGFLAGS
+  make -j4 V=1
+else
+  # must be GAP 4.8 or older
+  BuildPackagesOptions="$PWD"
+  ./configure --with-gmp=system $GAP_CONFIGFLAGS
+  make config
+  make -j4
+fi
 
 # download packages; instruct wget to retry several times if the
 # connection is refused, to work around intermittent failures
@@ -62,5 +71,5 @@ done
 # directly call BuildPackages.sh from .travis.yml. For an example of the
 # former, take a look at the cvec package.
 for pkg in ${GAP_PKGS_TO_BUILD-io profiling}; do
-    ../bin/BuildPackages.sh --strict $pkg*
+    ../bin/BuildPackages.sh ${BuildPackagesOptions} $pkg*
 done
