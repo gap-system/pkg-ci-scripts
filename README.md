@@ -1,19 +1,27 @@
 # CI scripts for GAP packages
 
 This repository contains scripts which GAP package can use to implement
-continuous integration test with e.g. Travis CI.
-
-These scripts are normally placed in subdirectory `scripts` or `etc` in
-the package. Examples for suitable `.travis.yml` and `.codecov.yml` files
-can be found in the `examples` branch of this repository.
+continuous integration test with [Travis CI](https://travis-ci.org), and
+code coverage with [Codecov](https://codecov.io).
 
 
 ## Initial setup
 
-TODO: explain how to use the code into the repository;
-and then how to setup Travis (this probably should also cover how to enable
-Travis CI integration on their website for packages which are not hosted
-in the `gap-packages` github organization)
+- If your package is not part of the `gap-packages` github organization, you need
+  to activate Travis and Codecov for your repository. You can do so on the following
+  pages; note that both services are free for open source projects; and you can\
+  login to each using your GitHub account
+  - https://github.com/marketplace/travis-ci
+  - https://github.com/marketplace/codecov
+
+- you need to add `.travis.yml`; an example is given in the next section
+
+- optionally, you can add a `.codecov.yml` file to tweak the Codecov settings
+
+
+TODO: elaborate? Ideally have some people who are not yet familiar with the CI
+setup try the above, and use their feedback to find out what kind of information
+would be useful...
 
 
 ## Upgrading to a newer version
