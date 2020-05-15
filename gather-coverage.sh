@@ -44,4 +44,4 @@ QUIT_GAP(0);
 GAPInput
 
 # generate source coverage reports by running gcov
-gcov -o . $(git ls-files :*.c :*.cc :*.cpp :*.C)
+gcov -o . $(git ls-files :*.c :*.cc :*.cpp :*.C) || :
