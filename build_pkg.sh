@@ -27,6 +27,9 @@ if [[ $ABI = 32 ]]; then
 fi
 
 # build this package, if necessary
+if [[ -x prerequisites.sh ]]; then
+    ./prerequisites.sh
+fi
 if [[ -x autogen.sh ]]; then
     ./autogen.sh
     ./configure --with-gaproot=$GAPROOT
