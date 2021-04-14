@@ -28,7 +28,7 @@ fi
 
 # build this package, if necessary
 if [[ -x prerequisites.sh ]]; then
-    ./prerequisites.sh
+    ./prerequisites.sh $GAPROOT
 fi
 if [[ -x autogen.sh ]]; then
     ./autogen.sh
