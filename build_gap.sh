@@ -28,14 +28,13 @@ if test -x ./autogen.sh ; then
   BuildPackagesOptions="--strict"
   ./autogen.sh
   ./configure $GAP_CONFIGFLAGS
-  make -j4 V=1
 else
   # must be GAP 4.8 or older
   BuildPackagesOptions="$PWD"
   ./configure --with-gmp=system $GAP_CONFIGFLAGS
   make config
-  make -j4
 fi
+make -j4
 
 # download packages; instruct wget to retry several times if the
 # connection is refused, to work around intermittent failures
