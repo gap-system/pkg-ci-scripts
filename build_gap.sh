@@ -15,7 +15,7 @@ set -ex
 GAPROOT=${GAPROOT-$HOME/gap}
 
 # clone GAP into a subdirectory
-git clone --depth=2 -b ${GAPBRANCH:-master} https://github.com/gap-system/gap.git $GAPROOT
+git clone --depth=2 -b ${GAPBRANCH:-master} https://github.com/${GAPFORK:-gap-system}/gap.git $GAPROOT
 cd $GAPROOT
 
 # for HPC-GAP, add suitable flags

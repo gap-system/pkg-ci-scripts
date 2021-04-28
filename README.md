@@ -114,6 +114,7 @@ TODO: mention `.codecov.yml` (perhaps also Coveralls); also `NO_COVERAGE`
 - `GAP_CONFIGFLAGS` -- optional configure flags to pass to GAP's configure script
 - `GAP_PKGS_TO_BUILD` -- see above for an explanation
 - `GAP_PKGS_TO_CLONE` -- see above for an explanation
+- `GAPFORK` -- the GitHub fork of GAP to use (default: `gap-system`)
 - `GAPBRANCH` -- the GAP branch to use (default: `master`)
 - `GAPROOT` -- the the location GAP is (to be) installed at (default: `$HOME/gap`)
 - `GAP_TESTFILE` -- the file read by `run_tests.sh` (default: `tst/testall.g`)
