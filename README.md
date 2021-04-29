@@ -124,13 +124,13 @@ TODO: mention `.codecov.yml` (perhaps also Coveralls); also `NO_COVERAGE`
 ## Contact
 
 Please submit bug reports, suggestions for improvements and patches via
-the [issue tracker](https://github.com/pkg-ci-scripts/ReleaseTools/issues).
+the [issue tracker](https://github.com/gap-system/pkg-ci-scripts/issues).
 
 
 ## Copyright and license
 
-Copyright (C) 2017-2019 Max Horn
-Copyright (C) 2017-2019 The GAP Team
+Copyright (C) 2017-2021 Max Horn
+Copyright (C) 2017-2021 The GAP Team
 
 This code is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
