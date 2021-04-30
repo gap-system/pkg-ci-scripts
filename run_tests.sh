@@ -33,6 +33,38 @@ if [[ -z $NO_COVERAGE ]]; then
     GAP="$GAP --cover ${COVDIR-coverage}/$(mktemp XXXXXX).coverage"
 fi
 
-# TODO: honor TestFile from PackageInfo record, but make sure that it
-# is for the package in the current directory
-$GAP ${GAP_TESTFILE:-tst/testall.g}
+$GAP $GAP_FLAGS <<GAPInput
+info := "PackageInfo.g";
+if IsReadableFile( info ) then
+    Unbind( GAPInfo.PackageInfoCurrent );
+    Read( info );
+    if IsBound( GAPInfo.PackageInfoCurrent ) then
+        record := GAPInfo.PackageInfoCurrent;
+        Unbind( GAPInfo.PackageInfoCurrent );
+    else
+        Error( "Something is wrong with PackageInfo.g" );
+    fi;
+else
+    Error( "PackageInfo.g is not readable" );
+fi;
+
+# Decide which packages should be loaded
+# Default is all necessary & suggested packages
+if $ALL_PACKAGES then
+    LoadAllPackages();
+elif $ONLY_NEEDED then
+    LoadPackage( record.PackageName : OnlyNeeded );
+else
+    LoadPackage( record.PackageName );
+fi;
+
+# Decide which test file should be used
+# Default is test file listed in PackageInfo.g
+if IsEmpty("${GAP_TESTFILE}") then
+    testFile := record.TestFile;
+else
+    testFile := "${GAP_TESTFILE}";
+fi;
+
+Read( testFile );
+GAPInput
